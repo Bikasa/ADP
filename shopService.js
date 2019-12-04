@@ -13,7 +13,7 @@ const getTopIcecreamShops = (reqParams) => {
         _getTopFiveIceceamShop(reqParams).then((shopsResult) => {
             let promiseArray = [];
             myshopDetails = shopsResult.map((shop) => {
-                promiseArray.push(_getReviewsPerShop(shop.alias));
+                promiseArray.push(_getReviewsforShop(shop.alias));
                 let obj = {};
                 obj.businessName = shop.name;
                 obj.city = shop.location.city;
@@ -21,7 +21,7 @@ const getTopIcecreamShops = (reqParams) => {
                 obj.address = shop.location.display_address.toString();
                 return obj;
             });
-            //Getting review by business Name
+            //Getting reviews by business ids 
             return Q.all(promiseArray);
         }).then((reviewResults) => {
             let resultOutput = [];
@@ -88,8 +88,8 @@ const _getTopFiveIceceamShop = (reqParams) => {
     return deferred.promise;
 }
 
-const _getReviewsPerShop = (businessId) => {
-    const logMethod = '_getTopFiveIceceamShop';
+const _getReviewsforShop = (businessId) => {
+    const logMethod = '_getReviewsforShop';
     const deferred = Q.defer();
     try {
         const reqUrl = `${businessId}/reviews`;
