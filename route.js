@@ -3,7 +3,7 @@ const router = new express.Router();
 const shopControler = require('./shopControler');
 
 const routes = () => {
-    router.route('/api/shops/:area')
+    router.route('/api/shops')
         .get(shopControler.getTopIcecreamShops);
 
     return router;

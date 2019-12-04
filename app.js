@@ -18,7 +18,7 @@ if (!process.env.NODE_ENV) {
 // Initialize body parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-app.use(cors);
+//app.use(cors);
 
 // Initialize routes
 app.use(routes());

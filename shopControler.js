@@ -3,11 +3,13 @@ const commonUtils = require('./commons/commonUtills');
 
 const getTopIcecreamShops = (req, res, next) => {
     try {
-        if (!req.params || !req.params.area) {
-            throw new Error('Area name is required.');
+
+        let reqParams = {
+            location: req.query.location,
+            term :req.query.term,
+            sort_by : req.query.sort_by
         }
-        const areaName = req.query.name;
-        shopService.getTopIcecreamShops(name).then((result) => {
+        shopService.getTopIcecreamShops(reqParams).then((result) => {
             commonUtils.okResponseHandler(result, req, res, next);
         }).catch((err) => {
             console.log(err);
