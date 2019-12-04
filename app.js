@@ -3,7 +3,6 @@ const express = require('express');
 const app = module.exports = express();
 const routes = require('./route');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 const port = 9191;
 
 
@@ -18,7 +17,6 @@ if (!process.env.NODE_ENV) {
 // Initialize body parser
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(bodyParser.json());
-//app.use(cors);
 
 // Initialize routes
 app.use(routes());
