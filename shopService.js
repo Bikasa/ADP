@@ -15,10 +15,10 @@ const getTopIcecreamShops = (reqParams) => {
             myshopDetails = shopsResult.map((shop) => {
                 promiseArray.push(_getReviewsPerShop(shop.alias));
                 let obj = {};
-                obj.alias = shop.alias
                 obj.businessName = shop.name;
                 obj.city = shop.location.city;
                 obj.state = shop.location.state;
+                obj.address = shop.location.display_address.toString();
                 return obj;
             });
             //Getting review by business Name

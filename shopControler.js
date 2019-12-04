@@ -4,6 +4,9 @@ const commonUtils = require('./commons/commonUtills');
 const getTopIcecreamShops = (req, res, next) => {
     try {
 
+        if(!req.query||!req.query.location||!req.query.term||!req.query.sort_by){
+            throw new Error('Invalid URL.Please pass all parametrs like location,term,sort_by');
+        }
         let reqParams = {
             location: req.query.location,
             term :req.query.term,
